@@ -43,11 +43,14 @@ body {
 
 h1 {
     margin: 0;
-    font-size: clamp(1.6rem, 4vw, 2.4rem);
+
     font-weight: 800;
     color: var(--amber)
 }
 
+.serif{
+    font-size: px;
+}
 .stage {
     border: 1px solid var(--panel-edge);
     border-radius: 18px;
