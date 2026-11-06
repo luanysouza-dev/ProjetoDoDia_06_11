@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>Cozy House Login</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css"> 
+</head>
+
+<body>
+    <h1>Cozy House Login</h1>
+    <main class="stage" id="stage">
+        <div class="scene">
+            <svg viewBox="0 0 380 280" role="img" aria-label="Casa que acende as luzes quando o interruptor é ligado">
+                <circle class="star" cx="60" cy="40" r="1.8" />
+                <circle class="star" cx="120" cy="20" r="1.4" />
+                <circle class="star" cx="95" cy="85" r="1.5" />
+                <circle class="star" cx="40" cy="105" r="1.4" />
+                <circle class="star" cx="265" cy="45" r="1.6" />
+                <circle class="star" cx="310" cy="95" r="1.5" />
+                <circle class="star" cx="215" cy="30" r="1.3" />
+                <circle class="star" cx="150" cy="60" r="1.2" />
+                <circle class="star" cx="330" cy="30" r="1.4" />
+                <path class="moon" d="M270 30a20 20 0 1 0 14 34a16 16 0 0 1-14-34z"
+                    transform="translate(-30,-8) scale(.9)" />
+                <ellipse class="ground" cx="190" cy="248" rx="170" ry="24" />
+                <ellipse class="glow" cx="190" cy="248" rx="150" ry="22" />
+                <rect class="chim" x="240" y="62" width="22" height="46" />
+                <rect class="wall" x="90" y="130" width="200" height="118" />
+                <polygon class="roof" points="70,135 190,50 310,135" />
+                <circle class="glass" cx="190" cy="108" r="11" />
+                <circle class="frame" cx="190" cy="108" r="11" />
+                <path class="frame" d="M190 97v22M179 108h22" />
+                <rect class="glass" x="108" y="156" width="52" height="44" />
+                <path class="frame" d="M108 156h52v44h-52zM134 156v44M108 178h52" />
+                <rect class="glass" x="220" y="156" width="52" height="44" />
+                <path class="frame" d="M220 156h52v44h-52zM246 156v44M220 178h52" />
+                <rect class="door" x="172" y="180" width="36" height="68" rx="2" />
+                <rect class="dwin" x="180" y="190" width="20" height="12" rx="1" />
+                <circle class="knob" cx="201" cy="222" r="2.5" />
+            </svg>
+            <button class="tg" id="tg" type="button" role="switch" aria-checked="false"
+                aria-label="Acender as luzes da casa">
+                <span class="knob2"></span><span class="lbl">OFF</span><span class="lbl o">ON</span>
+            </button>
+        </div>
+
+        <form class="card" id="card" aria-hidden="true" novalidate>
+            <h2>Welcome Home</h2>
+            <label for="u">Usuário</label>
+            <input id="u" type="text" placeholder="Digite seu usuário" autocomplete="username" tabindex="-1">
+            <label for="p">Senha</label>
+            <input id="p" type="password" placeholder="Digite sua senha" autocomplete="current-password" tabindex="-1">
+            <button class="btn" type="submit" tabindex="-1">Login</button>
+            <a class="forgot" href="#esqueci" tabindex="-1">Esqueceu a senha?</a>
+            <p class="msg" id="msg" role="status"></p>
+        </form>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,363 @@
+:root {
+    color-scheme: dark;
+    --bg: #07090f;
+    --panel: #0f1422;
+    --panel-edge: #1c2338;
+    --ink: #e8eaf2;
+    --mute: #8089a6;
+    --amber: #ffb62e;
+    --amber-soft: #ffd27a;
+    --wall: #2b3350;
+    --roof: #5a2a38;
+    --door: #7a4a24;
+    --win: #1a2038;
+    --field: #0a0e1a;
+    box-sizing: border-box;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+html {
+    scroll-padding-top: env(safe-area-inset-top, 0px)
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    background: var(--panel);
+    color: var(--ink);
+    font-family: 'Poppins', system-ui, -apple-system, 'Segoe UI', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+    padding: 20px
+}
+
+h1 {
+    margin: 0;
+    font-size: clamp(1.6rem, 4vw, 2.4rem);
+    font-weight: 800;
+    color: var(--amber)
+}
+
+.stage {
+    border: 1px solid var(--panel-edge);
+    border-radius: 18px;
+    background: var(--panel);
+    padding: 36px 28px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 28px;
+    align-items: center;
+    transition: background .6s, border-color .6s
+} 
+
+.on .stage {
+    background: #10172a;
+    border-color: #27304d
+}
+
+.scene {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 26px
+}
+
+svg {
+    width: min(380px, 100%);
+    height: auto;
+    overflow: visible
+}
+
+.star {
+    fill: #fff;
+    opacity: .7;
+    transition: opacity .6s
+}
+
+.on .star {
+    opacity: .25
+}
+
+.moon {
+    fill: #f1ecd8
+}
+
+.roof {
+    fill: var(--roof);
+    transition: fill .6s
+}
+
+.on .roof {
+    fill: #c8423b
+}
+
+.wall {
+    fill: var(--wall);
+    transition: fill .6s
+}
+
+.on .wall {
+    fill: #4a5f94
+}
+
+.chim {
+    fill: #2b2540;
+    transition: fill .6s
+}
+
+.on .chim {
+    fill: #5a3f6e
+}
+
+.glass {
+    fill: var(--win);
+    transition: fill .5s, filter .5s
+}
+
+.on .glass {
+    fill: var(--amber);
+    filter: drop-shadow(0 0 10px rgba(255, 182, 46, .9))
+}
+
+.frame {
+    stroke: #14182b;
+    stroke-width: 3;
+    fill: none
+}
+
+.door {
+    fill: var(--door);
+    transition: fill .6s
+}
+
+.on .door {
+    fill: #8a5226
+}
+
+.dwin {
+    fill: #14182b;
+    transition: fill .5s
+}
+
+.on .dwin {
+    fill: var(--amber)
+}
+
+.knob {
+    fill: #ffd27a
+}
+
+.ground {
+    fill: #141a2c;
+    transition: fill .6s
+}
+
+.on .ground {
+    fill: #2a2a3a
+}
+
+.glow {
+    fill: var(--amber);
+    opacity: 0;
+    transition: opacity .7s
+}
+
+.on .glow {
+    opacity: .18
+}
+
+.tg {
+    position: relative;
+    width: 96px;
+    height: 42px;
+    border: 0;
+    border-radius: 999px;
+    background: #1d2439;
+    cursor: pointer;
+    padding: 0;
+    transition: background .4s, box-shadow .4s;
+    color: var(--mute);
+    font: 700 .6rem 'Poppins', sans-serif
+}
+
+.tg:focus-visible {
+    outline: 3px solid var(--amber-soft);
+    outline-offset: 3px
+}
+
+.tg .knob2 {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: #fff;
+    transition: transform .35s cubic-bezier(.5, 1.4, .5, 1)
+}
+
+.tg .lbl {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 14px;
+    transition: opacity .3s
+}
+
+.tg .lbl.o {
+    left: 14px;
+    right: auto;
+    opacity: 0;
+    color: #3a2600
+}
+
+.on .tg {
+    background: var(--amber);
+    box-shadow: 0 0 22px rgba(255, 182, 46, .65)
+}
+
+.on .tg .knob2 {
+    transform: translateX(54px)
+}
+
+.on .tg .lbl:not(.o) {
+    opacity: 0
+}
+
+.on .tg .lbl.o {
+    opacity: 1
+}
+
+.card {
+    border: 2px solid var(--amber);
+    border-radius: 16px;
+    background: #0e1424;
+    padding: 26px 24px;
+    box-shadow: 0 0 28px rgba(255, 182, 46, .35);
+    opacity: 0;
+    transform: translateX(24px) scale(.97);
+    pointer-events: none;
+    visibility: hidden;
+    transition: opacity .6s .15s, transform .6s .15s, visibility 0s .75s;
+    max-height: 0;
+    overflow: hidden;
+    padding-top: 0;
+    padding-bottom: 0;
+    border-width: 0
+}
+
+.on .card {
+    opacity: 1;
+    transform: none;
+    pointer-events: auto;
+    visibility: visible;
+    transition: opacity .6s .25s, transform .6s .25s, visibility 0s;
+    max-height: 600px;
+    padding: 26px 24px;
+    border-width: 2px
+} 
+
+.card h2 {
+    margin: 0 0 16px;
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: 700
+}
+
+label {
+    display: block;
+    font-size: .7rem;
+    font-weight: 600;
+    margin: 12px 0 5px
+}
+
+input {
+    width: 100%;
+    padding: 10px 12px;
+    border-radius: 8px;
+    border: 1px solid var(--panel-edge);
+    background: var(--field);
+    color: var(--ink);
+    font: 400 .8rem 'Poppins', sans-serif
+}
+
+input::placeholder {
+    color: #59617c
+}
+
+input:focus {
+    outline: 2px solid var(--amber);
+    border-color: var(--amber)
+}
+
+.btn {
+    width: 100%;
+    margin-top: 18px;
+    padding: 11px;
+    border: 0;
+    border-radius: 10px;
+    background: var(--amber);
+    color: #2a1a00;
+    font: 700 .9rem 'Poppins', sans-serif;
+    cursor: pointer;
+    box-shadow: 0 0 16px rgba(255, 182, 46, .45);
+    transition: transform .15s
+}
+
+.btn:hover {
+    transform: translateY(-1px)
+}
+
+.btn:focus-visible {
+    outline: 3px solid #fff;
+    outline-offset: 2px
+}
+
+.forgot {
+    display: block;
+    text-align: center;
+    margin-top: 14px;
+    font-size: .7rem;
+    color: var(--mute);
+    text-decoration: none
+}
+
+.forgot:hover {
+    color: var(--amber-soft)
+}
+
+.msg {
+    margin: 12px 0 0;
+    text-align: center;
+    font-size: .75rem;
+    color: var(--amber-soft);
+    min-height: 1em
+}
+
+@media(min-width:760px) {
+    .stage {
+        grid-template-columns: 1fr 1fr;
+        padding: 44px
+    }
+
+    .on .stage {
+        gap: 36px
+    }
+}
+
+@media(prefers-reduced-motion:reduce) {
+    * {
+        transition-duration: .01s !important;
+        transition-delay: 0s !important
+    }
+}
